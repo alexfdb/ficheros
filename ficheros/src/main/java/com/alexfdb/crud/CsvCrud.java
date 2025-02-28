@@ -16,8 +16,10 @@ public class CsvCrud extends CsvUtil{
 
     public boolean create(Empleado empleado) {
         if(empleado == null || empleado.getId() == null || empleado.getId().isEmpty()) return false;
-        empleados.add(empleado);
-        return setToCsv(empleados);
+        if(empleados.add(empleado)) {
+            return setToCsv(empleados);
+        }
+        return false;
     }
 
     public Empleado read(Empleado empleado) {

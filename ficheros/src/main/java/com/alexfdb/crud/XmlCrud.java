@@ -16,8 +16,10 @@ public class XmlCrud extends XmlUtil{
 
     public boolean create(Empleado empleado) {
         if(empleado == null || empleado.getId() == null || empleado.getId().isEmpty()) return false;
-        empleados.add(empleado);
-        return setToXml(empleados);
+        if(empleados.add(empleado)) {
+            return setToXml(empleados);
+        }
+        return false;
     }
 
     public Empleado read(Empleado empleado) {

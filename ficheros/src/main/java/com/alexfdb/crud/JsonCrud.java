@@ -16,8 +16,10 @@ public class JsonCrud extends JsonUtil{
 
     public boolean create(Empleado empleado) {
         if(empleado == null || empleado.getId() == null || empleado.getId().isEmpty()) return false;
-        empleados.add(empleado);
-        return setToJson(empleados);
+        if(empleados.add(empleado)) {
+            return setToJson(empleados);
+        }
+        return false;
     }
 
     public Empleado read(Empleado empleado) {

@@ -99,7 +99,7 @@ public class XmlUtil {
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
-            File outputFile = new File(path);
+            File outputFile = file;
             transformer.transform(new DOMSource(document), new StreamResult(outputFile));
 
             return true;
